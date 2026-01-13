@@ -6,9 +6,9 @@ DOMAIN=$(cat ~/.config/cloudflare/domain)
 RECORD_ID=$(cat ~/.config/cloudflare/record_id)
 
 if [[ $(uname) == "Darwin" ]]; then
-    IP=$(ifconfig en0 | grep "inet6 2408" | grep -v "deprecated" | grep -v "temporary" | awk '{print $2}' | head -n 1)
+    IP=$(ifconfig | grep 'inet6' | grep -v 'fe80' | grep -v '::1' | grep -v 'temporary' | grep -v 'deprecated' | awk '{print $2}' | head -n 1)
 elif [[ $(uname) == "Linux" ]]; then
-    IP=$(ip address show dev enp3s0 | grep "inet6 2408" | grep -v "deprecated" | grep -v "temporary" | awk '{print $2}' | cut -d'/' -f1 | head -n 1)
+    IP=$(ip -6 addr show | grep 'scope global' | grep -v 'temporary' | awk '{print $2}' | cut -d'/' -f1 | head -n 1)
 else
     echo "Unsupported OS"
     exit 1
