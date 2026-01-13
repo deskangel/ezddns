@@ -20,7 +20,7 @@ For privacy reasons, the following variables are saved in `~/.config/cloudflare/
 In order to update the DNS Record to Cloudflare, you need to get your Cloudflare `API Token` and `Zone ID`. You can obtain these values from the Cloudflare dashboard.
 Save the values to `~/.config/cloudflare/api_token` and `~/.config/cloudflare/zone_id`.
 
-** DO NOT confuse the `API Key` with the `API Token`. **
+**DO NOT confuse the `API Key` with the `API Token`.**
 
 ### `DNS record ID`
 1. Create a new AAAA record for your domain, the IP address can be ::1.
@@ -86,7 +86,7 @@ Then, load the plist file using the following command:
 ```bash
 launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.example.ddns.plist
 ```
-** In case you want to unload the plist file in the future, replace the `bootstrap` with `bootout`.**
+**In case you want to unload the plist file in the future, replace the `bootstrap` with `bootout`.**
 
 Then, test the service once using the following command:
 ```bash
